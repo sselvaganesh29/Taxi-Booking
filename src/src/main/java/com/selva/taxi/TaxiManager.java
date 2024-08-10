@@ -3,6 +3,7 @@ package com.selva.taxi;
 import com.selva.database.DataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
 public class TaxiManager
@@ -92,7 +93,8 @@ public class TaxiManager
 
     public void deleteTaxi(int taxiNo)
     {
-        try {
+        try
+        {
             Connection connection = DataBase.getConnection("jdbc:postgresql://localhost:5432/taxi", "superuser", "selva");
 
             String deleteSql = " DELETE FROM taxi_info WHERE taxi_id = ?";
@@ -104,10 +106,76 @@ public class TaxiManager
             preparedStatement.executeUpdate();
 
             System.out.println("Your data deleted successfully");
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             System.out.println(" Failed to delete!!!");
         }
 
     }
 
+    public void getTaxiDetails(int taxiNO) {
+
+        try
+        {
+            Connection connection = DataBase.getConnection("jdbc:postgresql://localhost:5432/taxi", "superuser", "selva");
+
+            String sql = "SELECT * FROM taxi_info WHERE taxi_id = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+
+            preparedStatement.setInt(1,taxiNO);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next())
+            {
+                int taxiId = resultSet.getInt("taxi_id");
+                String taxiName = resultSet.getString("taxi_name");
+
+                System.out.println("TaxiId : " + taxiId);
+                System.out.println("TaxiName : " + taxiName);
+            }
+            else
+            {
+                System.out.println("Taxi not found with this ID");
+
+            }
+
+        }
+
+        catch (Exception e)
+        {
+            System.out.println("Failed to load taxi details!!!!");
+        }
+    }
+
+    public void getAllTaxi()
+    {
+        try
+        {
+            Connection connection = DataBase.getConnection("jdbc:postgresql://localhost:5432/taxi", "superuser", "selva");
+
+            String sql = "SELECT * FROM taxi_info";
+
+            PreparedStatement preparedStatement = connection.prepareStatement( sql );
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while ( resultSet.next() )
+            {
+                int taxiId = resultSet.getInt("taxi_id");
+                String taxiName = resultSet.getString("taxi_name");
+
+                System.out.println( "Taxi ID : " + taxiId );
+                System.out.println( "Taxi Name : " + taxiName);
+
+                System.out.println("-----------");
+            }
+        }
+        catch ( Exception e)
+        {
+            System.out.println("Failed to load Taxi!!!");
+        }
+    }
 }

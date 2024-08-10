@@ -57,6 +57,10 @@ public class Main
         taxi2.createRide(1000, new Person(26,"selva"), 2, 9);
         taxi5.createRide(1002,new Person(36,"suwetha"),1,5 );
 
+        taximanager.getTaxiDetails(6);
+
+        taximanager.getAllTaxi();
+
 
         System.out.println("-----------------");
 
