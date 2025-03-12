@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TaxiBooking:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TaxiBooking_jar</output-path>
+    <root id="archive" name="TaxiBooking.jar">
+      <element id="module-output" name="TaxiBooking" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/5.0.1/HikariCP-5.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/2.0.0-alpha1/slf4j-api-2.0.0-alpha1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/postgresql/postgresql/42.2.18/postgresql-42.2.18.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

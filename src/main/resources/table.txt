@@ -1,0 +1,37 @@
+//ride table
+
+CREATE TABLE tbl_ride (
+    ride_id SERIAL PRIMARY KEY,
+    taxi_id INT,
+    passenger_id INT NOT NULL,
+    taxi_no INT,
+    starting_point INT,
+    ending_point INT,
+    km_travelled INT,
+    fare INT,
+    status VARCHAR(50) DEFAULT 'booked',
+    FOREIGN KEY (taxi_id) REFERENCES tbl_taxi(taxi_id) ON DELETE CASCADE,
+    FOREIGN KEY (passenger_id) REFERENCES users(id)
+);
+
+
+
+//users table
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    role VARCHAR(20) NOT NULL
+);
+
+// taxi table
+
+  CREATE TABLE tbl_taxi (
+  taxi_id SERIAL PRIMARY KEY,
+  driver_id INT NOT NULL,
+  taxi_no INT UNIQUE,
+  taxi_name VARCHAR(50),
+  CONSTRAINT fk_user_id FOREIGN KEY ( driver_id ) REFERENCES users(id)
+  );
+

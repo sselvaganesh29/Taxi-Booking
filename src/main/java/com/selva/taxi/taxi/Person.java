@@ -1,4 +1,4 @@
-package com.selva.taxi;
+package com.selva.taxi.taxi;
 
 public class Person
 {
@@ -7,11 +7,11 @@ public class Person
     private String name;
 
 
-    public Person( int id, String name )
+    public Person( String name )
     {
-        this.id = id;
         this.name = name;
     }
+
 
     public int getPersonId() {
         return id;

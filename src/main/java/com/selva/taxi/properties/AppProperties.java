@@ -1,4 +1,4 @@
-package com.selva.taxi;
+package com.selva.taxi.properties;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,9 +10,10 @@ public class AppProperties
 
     private static final Properties properties = new Properties();
 
-    public static void loadProperties()
+
+    public static void loadProperties( String path)
     {
-        try (FileInputStream file = new FileInputStream("src/main/resources/taxi.properties"))
+        try (FileInputStream file = new FileInputStream( path ))
         {
             properties.load(file);
         }
@@ -29,7 +30,7 @@ public class AppProperties
         return properties.getProperty(key, defaultValue);
     }
 
-    public static Optional<String> getOptionalString(String key)
+    public static Optional<String> getString(String key)
     {
         String value = properties.getProperty(key);
         return Optional.ofNullable(value);
@@ -88,7 +89,7 @@ public class AppProperties
         return defaultValue;
     }
 
-    public static Optional<Long> getOptionalLong(String key)
+    public static Optional<Long> getLong(String key)
     {
         String value = properties.getProperty(key);
         if (value != null)
@@ -124,7 +125,7 @@ public class AppProperties
         return defaultValue;
     }
 
-    public static Optional<Float> getOptionalFloat(String key)
+    public static Optional<Float> getFloat(String key)
     {
         String value = properties.getProperty(key);
         if (value != null)
