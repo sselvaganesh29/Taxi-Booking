@@ -32,6 +32,6 @@ CREATE TABLE users (
   driver_id INT NOT NULL,
   taxi_no INT UNIQUE,
   taxi_name VARCHAR(50),
-  CONSTRAINT fk_user_id FOREIGN KEY ( driver_id ) REFERENCES users(id)
+  FOREIGN KEY ( driver_id ) REFERENCES users(id)
   );
 
